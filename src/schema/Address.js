@@ -17,12 +17,21 @@ const DivisionSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
-// District Schema
-const DistrictSchema = new Schema({
-  name: { type: String, required: true },
-  division: { type: Schema.Types.ObjectId, ref: "Division", required: true },
+const DistrictSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  division: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Division",
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
-
 // Thana Schema
 const ThanaSchema = new Schema({
   name: { type: String, required: true },
