@@ -1,5 +1,5 @@
-const { stringifySafe } = require('./stringifySafe.js');
-const { errorCodes } = require('./errorCodes.js');
+const { stringifySafe } = require("./stringyfySafe.js");
+const { errorCodes } = require("./errorCodes.js");
 
 function getErrData(err) {
   if (err) {
@@ -143,5 +143,5 @@ const errorResponseHandler = (err, req, res, next) => {
 };
 
 module.exports = {
-  errorResponseHandler
+  errorResponseHandler,
 };

@@ -14,7 +14,7 @@ const statusCodes = {
   NOT_IMPLEMENTED: 501,
   BAD_GATEWAY: 502,
   SERVICE_UNAVAILABLE: 503,
-  GATEWAY_TIME_OUT: 504
+  GATEWAY_TIME_OUT: 504,
 };
 
 module.exports = { statusCodes };
