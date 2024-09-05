@@ -1,6 +1,7 @@
 const { errorResponseHandler } = require("../helper/errorResponseHandler");
 const { statusCodes } = require("../helper/statusCodes");
 const Division = require("../models/Division");
+const District = require("../models/District");
 
 exports.createDivision = async (req, res) => {
   try {
@@ -31,6 +32,44 @@ exports.getAllDivisions = async (req, res) => {
   try {
     const divisions = await Division.getAllDivisions();
     res.success(divisions, "Divisions get successfully");
+  } catch (error) {
+    errorResponseHandler(error, req, res);
+  }
+};
+
+exports.createDistrict = async (req, res) => {
+  try {
+    const { name, divisionId } = req.body;
+
+    if (!name || !divisionId) {
+      return res
+        .status(400)
+        .json({ message: "Name and division ID are required" });
+    }
+    const newDistrict = await District.addDistrict(name, divisionId);
+    res.created(newDistrict, "District created successfully");
+  } catch (error) {
+    errorResponseHandler(error, req, res);
+  }
+};
+
+exports.createMultipleDistricts = async (req, res) => {
+  try {
+    const districts = req.body.districts;
+
+    // Validate input
+    if (!Array.isArray(districts) || districts.length === 0) {
+      return res
+        .status(400)
+        .json({ message: "An array of districts is required" });
+    }
+
+    // Call the model method to add multiple districts
+    const newDistricts = await District.addMultipleDistricts(districts);
+    return res.status(201).json({
+      message: "Districts created successfully",
+      districts: newDistricts,
+    });
   } catch (error) {
     errorResponseHandler(error, req, res);
   }
