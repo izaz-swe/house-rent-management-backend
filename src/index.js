@@ -19,7 +19,7 @@ app.use(responseHandler());
 app.options('*', cors());
 app.use(cookieParser());
 app.use(morgan('dev'));
-app.use('/v1', routes);
+app.use('/api', routes);
 
 const server = app.listen(PORT, () => {
     console.log(`⚡️[server]: Server is running at ${PORT}`);

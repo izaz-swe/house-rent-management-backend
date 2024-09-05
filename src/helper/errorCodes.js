@@ -108,6 +108,10 @@ const errorCodes = {
     reason: "RequestObjectNotCompleted",
     message: "Image File is Missing",
   },
+  40202: {
+    reason: "NameAndCodeMissing",
+    message: "Name and code are required",
+  },
   // ================== Authorizer error codes ==================
   40110: {
     reason: "TokenExpired",
@@ -146,8 +150,8 @@ const errorCodes = {
     message: "User is already exists",
   },
   40902: {
-    reason: "ConflictSubscription",
-    message: "Shop already have a subscription.",
+    reason: "ConflictCreateDivision",
+    message: "Division already exists",
   },
   50001: {
     reason: "UnknownError",
