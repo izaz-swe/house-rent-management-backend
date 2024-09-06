@@ -7,8 +7,8 @@ router.post("/division", address.createDivision);
 
 router.get("/divisions", address.getAllDivisions);
 router.post("/district", address.createDistrict);
-
 router.post("/districts/multiple", address.createMultipleDistricts);
+router.get("/districts/:divisionId", address.getDistrictsByDivisionId);
 
 router.post("/thana", address.addThana);
 

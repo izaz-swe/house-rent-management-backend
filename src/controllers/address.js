@@ -77,6 +77,23 @@ exports.createMultipleDistricts = async (req, res) => {
   }
 };
 
+exports.getDistrictsByDivisionId = async (req, res) => {
+  try {
+    const { divisionId } = req.params;
+
+    const districts = await District.getDistrictByDivisionId(divisionId);
+
+    if (!districts.length) {
+      return res
+        .status(404)
+        .json({ message: "No districts found for the given divisionId" });
+    }
+
+    res.success(districts, "Districts get successfully");
+  } catch (error) {
+    errorResponseHandler(error, req, res);
+  }
+};
 exports.addThana = async (req, res) => {
   try {
     const thanaData = req.body;
