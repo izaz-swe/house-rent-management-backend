@@ -32,7 +32,6 @@ const DistrictSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
-// Thana Schema
 const ThanaSchema = new Schema({
   name: {
     type: String,
@@ -51,8 +50,19 @@ const ThanaSchema = new Schema({
 
 // SubArea Schema
 const SubAreaSchema = new Schema({
-  name: { type: String, required: true },
-  thana: { type: Schema.Types.ObjectId, ref: "Thana", required: true },
+  name: {
+    type: String,
+    required: true,
+  },
+  thana: {
+    type: Schema.Types.ObjectId,
+    ref: "Thana",
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const Division = mongoose.model("Division", DivisionSchema);
