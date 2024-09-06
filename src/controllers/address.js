@@ -2,6 +2,7 @@ const { errorResponseHandler } = require("../helper/errorResponseHandler");
 const { statusCodes } = require("../helper/statusCodes");
 const Division = require("../models/Division");
 const District = require("../models/District");
+const Thana = require("../models/Thana");
 
 exports.createDivision = async (req, res) => {
   try {
@@ -70,6 +71,26 @@ exports.createMultipleDistricts = async (req, res) => {
       message: "Districts created successfully",
       districts: newDistricts,
     });
+  } catch (error) {
+    errorResponseHandler(error, req, res);
+  }
+};
+
+exports.addThana = async (req, res) => {
+  try {
+    const thanaData = req.body;
+    const thana = await Thana.addThana(thanaData);
+    return res.status(201).json({ success: true, data: thana });
+  } catch (error) {
+    errorResponseHandler(error, req, res);
+  }
+};
+
+exports.addMultipleThanas = async (req, res) => {
+  try {
+    const thanasData = req.body;
+    const thanas = await Thana.addMultipleThanas(thanasData);
+    res.created(thanas, "Thanas created successfully");
   } catch (error) {
     errorResponseHandler(error, req, res);
   }

@@ -10,4 +10,8 @@ router.post("/district", address.createDistrict);
 
 router.post("/districts/multiple", address.createMultipleDistricts);
 
+router.post("/thana", address.addThana);
+
+router.post("/thana/multiple", address.addMultipleThanas);
+
 module.exports = router;

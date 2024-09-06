@@ -34,8 +34,19 @@ const DistrictSchema = new mongoose.Schema({
 });
 // Thana Schema
 const ThanaSchema = new Schema({
-  name: { type: String, required: true },
-  district: { type: Schema.Types.ObjectId, ref: "District", required: true },
+  name: {
+    type: String,
+    required: true,
+  },
+  district: {
+    type: Schema.Types.ObjectId,
+    ref: "District",
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 // SubArea Schema
