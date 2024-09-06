@@ -14,4 +14,6 @@ router.post("/thana", address.addThana);
 
 router.post("/thana/multiple", address.addMultipleThanas);
 
+router.post("/sub-area", address.addSubArea);
+router.post("/sub-areas/multiple", address.addMultipleSubAreas);
 module.exports = router;

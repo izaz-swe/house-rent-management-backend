@@ -3,6 +3,7 @@ const { statusCodes } = require("../helper/statusCodes");
 const Division = require("../models/Division");
 const District = require("../models/District");
 const Thana = require("../models/Thana");
+const SubArea = require("../models/SubArea");
 
 exports.createDivision = async (req, res) => {
   try {
@@ -91,6 +92,26 @@ exports.addMultipleThanas = async (req, res) => {
     const thanasData = req.body;
     const thanas = await Thana.addMultipleThanas(thanasData);
     res.created(thanas, "Thanas created successfully");
+  } catch (error) {
+    errorResponseHandler(error, req, res);
+  }
+};
+
+exports.addSubArea = async (req, res) => {
+  try {
+    const subAreaData = req.body;
+    const subArea = await SubArea.addSubArea(subAreaData);
+    res.created(subArea, "Sub Area created successfully");
+  } catch (error) {
+    errorResponseHandler(error, req, res);
+  }
+};
+
+exports.addMultipleSubAreas = async (req, res) => {
+  try {
+    const subAreasData = req.body;
+    const subAreas = await SubArea.addMultipleSubAreas(subAreasData);
+    res.created(subAreas, "Sub Areas created successfully");
   } catch (error) {
     errorResponseHandler(error, req, res);
   }
