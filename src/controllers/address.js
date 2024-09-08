@@ -133,3 +133,18 @@ exports.addMultipleSubAreas = async (req, res) => {
     errorResponseHandler(error, req, res);
   }
 };
+
+exports.getThanas = async (req, res) => {
+  try {
+    const { districtId } = req.params;
+    const thanas = await Thana.getThanasByDistrictId(districtId);
+    if (!thanas.length) {
+      return res
+        .status(404)
+        .json({ message: "No thanas found for the given districtId" });
+    }
+    res.success(thanas, "Thanas get successfully");
+  } catch (error) {
+    errorResponseHandler(error, req, res);
+  }
+};
