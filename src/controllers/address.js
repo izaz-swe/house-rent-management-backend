@@ -148,3 +148,19 @@ exports.getThanas = async (req, res) => {
     errorResponseHandler(error, req, res);
   }
 };
+
+exports.getSubAreasByThanaId = async (req, res) => {
+  try {
+    const { thanaId } = req.params;
+    const subAreas = await SubArea.getSubAreasByThanaId(thanaId);
+    if (!subAreas.length) {
+      return res
+        .status(404)
+        .json({ message: "No sub areas found for the given thanaId" });
+    }
+
+    res.success(subAreas, "Sub Areas get successfully");
+  } catch (error) {
+    errorResponseHandler(error, req, res);
+  }
+};
