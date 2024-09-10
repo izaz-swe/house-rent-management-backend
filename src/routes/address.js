@@ -16,4 +16,5 @@ router.get('/thanas/:districtId', address.getThanas);
 
 router.post("/sub-area", address.addSubArea);
 router.post("/sub-areas/multiple", address.addMultipleSubAreas);
+router.get('/subareas/:thanaId', address.getSubAreasByThanaId);
 module.exports = router;
